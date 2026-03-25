@@ -2,25 +2,29 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE, DATABASE_URL } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DATABASE, DATABASE_URL, NODE_ENV } = process.env;
 
-// 1. Definimos la URL local por si no existe la de producción
-const DB_LOCAL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`;
+const isProduction = NODE_ENV === "production";
 
-// 2. Elegimos qué URL usar
-const targetURL = DATABASE_URL || DB_LOCAL;
+// 1. Definimos la URL local por si no existe la de producción (con soporte para puerto personalizado)
+const portString = DB_PORT ? `:${DB_PORT}` : "";
+const DB_LOCAL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}${portString}/${DATABASE}`;
+
+// 2. Elegimos qué URL usar basándonos en si estamos en producción
+// Esto evita que en local intentes conectarte a la base de datos de la nube
+const targetURL = isProduction && DATABASE_URL ? DATABASE_URL : DB_LOCAL;
 
 // 3. Creamos la instancia única de Sequelize
 const sequelize = new Sequelize(targetURL, {
   logging: false,
   native: false,
-  dialectOptions: DATABASE_URL 
+  dialectOptions: isProduction && DATABASE_URL
     ? {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
-      }
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    }
     : {}, // Si es local, no enviamos opciones de SSL
 });
 

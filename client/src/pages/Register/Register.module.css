@@ -5,16 +5,19 @@
   justify-content: center;
   min-height: 100vh; 
   color: #fff;
-  padding: 20px;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
 .title {
-  font-size: 2.5rem; 
+  font-size: clamp(2rem, 5vw, 3rem); 
   color: #fe9f02;
-  font-weight: bold;
-  margin: 40px 0;
+  font-weight: 900;
+  margin-bottom: 40px;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(254, 159, 2, 0.3);
 }
 
 .containerForm {
@@ -22,98 +25,121 @@
   flex-direction: column;
   width: 100%;
   max-width: 500px;
-  padding: 30px 20px;
+  padding: 40px 30px;
   justify-content: center;
   align-items: center;
-  background: hsla(0, 0%, 100%, 0.07);
-  border-radius: 15px;
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   margin-bottom: 30px;
   box-sizing: border-box;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .containerInput {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   display: flex;
   align-items: center;
   font-size: 1.1rem;
 }
 
 .spanInput {
-  flex: 0 0 110px;
+  flex: 0 0 120px;
+  font-weight: 600;
+  color: #ddd;
 }
 
 .input {
   flex: 1;
   height: 45px;
   border: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 0 15px;
   border-bottom: 3px solid #fe9f02;
   color: #fff;
   font-size: 1rem;
-  padding-left: 10px;
-  transition: border-bottom 0.3s;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .input:focus {
   outline: none;
+  background: rgba(0, 0, 0, 0.5);
   border-bottom: 3px solid #fff;
+  box-shadow: 0 4px 15px rgba(254, 159, 2, 0.2);
 }
 
 .button {
   height: 50px;
   width: 100%;
-  max-width: 200px;
-  background: transparent;
-  color: #fff;
-  border: 3px solid #fe9f02;
-  border-radius: 8px;
-  font-size: 1rem;
-  margin-top: 20px;
-  transition: 0.3s ease;
+  background: rgba(254, 159, 2, 0.1);
+  color: #fe9f02;
+  border: 2px solid #fe9f02;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .button:hover {
-  font-weight: bold;
   cursor: pointer;
-  text-transform: uppercase;
   background: #fe9f02;
   color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(254, 159, 2, 0.4);
 }
 
 .spanInfo, .link {
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-align: center;
+  color: #ccc;
+  margin-top: 15px;
 }
-.link{
-  color: #fff;
-}
-.link:hover {
+
+.link {
   color: #fe9f02;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-left: 5px;
+}
+
+.link:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 /* --- RESPONSIVE --- */
 
 @media (max-width: 600px) {
   .title {
-    font-size: 1.8rem;
-    margin: 30px 0;
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
 
   .containerForm {
-    width: 100%;
-    padding: 20px 15px;
+    padding: 30px 20px;
+    border-radius: 15px;
   }
 
   .containerInput {
-    flex-direction: column; /* Apila etiqueta e input en celulares */
+    flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    margin-bottom: 20px;
   }
 
   .spanInput {
     flex: none;
     width: 100%;
+    font-size: 1rem;
   }
 
   .input {

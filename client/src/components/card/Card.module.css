@@ -1,33 +1,52 @@
 .containerCard {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   color: ghostwhite;
   list-style: none;
-  background: #ffffff12;
+  background: rgba(25, 25, 25, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  transition: 
-    transform 0.25s ease,
-    opacity 0.25s ease,
-    border 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
 .containerCard:hover {
-  transform: scale(1.03);
-  opacity: 0.9;
+  transform: translateY(-8px);
   cursor: pointer;
-  border: 2px solid #fe9f02;
+  border: 1px solid rgba(254, 159, 2, 0.5);
+  box-shadow: 0 12px 40px 0 rgba(254, 159, 2, 0.2);
 }
 
 /* ---------------- IMAGE ---------------- */
 
 .image {
   width: 100%;
-  height: 250px;
+  height: 220px;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.containerCard:hover .image {
+  transform: scale(1.05);
+}
+
+.imageSkeleton {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* ---------------- PLATFORMS ---------------- */
@@ -47,28 +66,28 @@
 }
 
 .titleGame {
-  font-size: clamp(20px, 3vw, 30px);
-  font-weight: bold;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
   align-self: flex-start;
   padding: 0 20px;
-  margin-top: 10px;
+  margin-top: 15px;
+  color: #fff;
 }
 
 /* ---------------- INFO ---------------- */
 
 .containerInfo {
-   padding: 15px;     /* ✅ mantenemos tu padding original */
+   padding: 15px 20px 20px 20px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .info {
   display: flex;
-  font-size: 12px;
+  font-size: 13px;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
-  min-height: 50px;
+  min-height: 40px;
   gap: 10px;
 }
 
@@ -76,12 +95,18 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   height: auto;
-  margin: 20px 0;
-  gap: 6px;
+  margin: 15px 0 0 0;
+  gap: 8px;
 }
 
 .namePlatform {
-  margin: 5px;
+  margin: 2px;
+  background: rgba(254, 159, 2, 0.15);
+  color: #fe9f02;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 11px;
 }
 
 /* ---------------- CALIFICATION ---------------- */
@@ -89,14 +114,16 @@
 .calification {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .star {
-  color: #ffff36;
+  color: #fe9f02;
   margin: 0;
-  width: 30px;
-  font-size: 25px;
+  width: 20px;
+  font-size: 20px;
 }
 
 /* ---------------- LINKS ---------------- */
@@ -104,26 +131,21 @@
 .link {
   color: #fff;
   text-decoration: none;
-  transition: 
-    transform 0.2s ease,
-    font-weight 0.2s ease;
-}
-
-.link:hover {
-  transform: scale(1.05);
-  font-weight: bold;
+  width: 100%;
+  display: block;
+  overflow: hidden;
 }
 
 /* ---------------- TEXT ---------------- */
 
 .pagraph {
-  font-weight: bold;
-  text-decoration: underline;
+  font-weight: 600;
+  color: #aaa;
 }
 
 /* ---------------- SEPARATOR ---------------- */
 
 .separator {
-  border-bottom: 1px solid #696969;
-  margin: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 8px 0;
 }

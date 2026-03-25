@@ -2,40 +2,57 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Centra verticalmente en la pantalla */
-  min-height: 100vh; /* Permite que crezca si el contenido es mucho */
+  justify-content: center;
+  min-height: 100vh;
   color: #fff;
-  padding: 20px;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   color: #fe9f02;
-  font-weight: bold;
-  margin-bottom: 40px;
+  font-weight: 900;
+  margin-bottom: 30px;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 15px rgba(254, 159, 2, 0.3);
 }
-.link{
+
+.link {
+  color: #fe9f02;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
   color: #fff;
+  text-decoration: underline;
 }
+
 .containerForm {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 450px; /* Ancho ideal para escritorio */
-  padding: 40px 20px;
+  max-width: 450px;
+  padding: 40px;
   justify-content: center;
   align-items: center;
-  background: hsla(0, 0%, 100%, 0.07);
-  border-radius: 15px;
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
   margin-bottom: 30px;
   box-sizing: border-box;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 .containerInput {
   width: 100%;
-  margin-bottom: 25px; /* Espaciado constante */
+  margin-bottom: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -43,76 +60,92 @@
 }
 
 .spanInput {
-  flex: 0 0 100px; /* El texto siempre ocupa 100px para que los inputs queden alineados */
+  flex: 0 0 100px;
+  font-weight: 600;
+  color: #ddd;
 }
 
 .input {
-  flex: 1; /* El input toma el resto del espacio disponible */
+  flex: 1;
   height: 40px;
   border: 0;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  padding: 0 15px;
   border-bottom: 3px solid #fe9f02;
   color: #fff;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .input:focus {
   outline: none;
+  background: rgba(0, 0, 0, 0.5);
   border-bottom: 3px solid #fff;
+  box-shadow: 0 4px 15px rgba(254, 159, 2, 0.2);
 }
 
 .button {
   height: 50px;
-  width: 100%; /* Botón ancho para móviles */
-  max-width: 200px;
-  background: transparent;
-  color: #fff;
-  border: 3px solid #fe9f02;
-  border-radius: 8px;
-  font-size: 1rem;
-  margin-top: 20px;
-  transition: 0.3s;
+  width: 100%;
+  background: rgba(254, 159, 2, 0.1);
+  color: #fe9f02;
+  border: 2px solid #fe9f02;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .button:hover {
-  font-weight: bold;
   cursor: pointer;
-  text-transform: uppercase;
-  background: #fe9f02; /* Cambiamos el fondo al hacer hover para feedback visual */
+  background: #fe9f02;
   color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(254, 159, 2, 0.4);
+}
+
+.spanInfo {
+  font-size: 1rem;
+  margin-top: 15px;
+  color: #ccc;
+  text-align: center;
 }
 
 /* --- RESPONSIVE --- */
 
 @media (max-width: 600px) {
   .title {
-    font-size: 2rem;
-    margin-top: 20px;
+    font-size: 2.2rem;
   }
 
   .containerForm {
-    width: 95vw; /* Casi todo el ancho en móviles */
-    padding: 30px 15px;
+    padding: 30px 20px;
+    border-radius: 15px;
   }
 
   .containerInput {
-    flex-direction: column; /* En móviles pequeños, etiqueta arriba e input abajo */
+    flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .spanInput {
     flex: none;
     width: 100%;
+    font-size: 1rem;
   }
 
   .input {
     width: 100%;
-    margin-left: 0; /* Quitamos el margen lateral que rompe el centrado */
+    box-sizing: border-box;
   }
 
   .spanInfo, .link {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }

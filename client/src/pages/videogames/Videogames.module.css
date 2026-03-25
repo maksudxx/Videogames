@@ -2,27 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px 0;
+  margin: 40px 0;
   width: 100%;
 }
 
 .title {
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   color: #fe9f02;
-  font-weight: 800;
-  margin-bottom: 30px;
+  font-weight: 900;
+  margin-bottom: 40px;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-shadow: 0 4px 15px rgba(254, 159, 2, 0.4);
 }
 .containerCards {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
   justify-items: center;
-  margin: 40px 0;
-  padding: 0 20px;
+  margin: 20px 0 50px 0;
+  padding: 0;
   list-style: none;
   box-sizing: border-box;
 }
@@ -32,7 +33,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;       
+  gap: 10px;       
   list-style: none;
   padding: 0;
   margin: 40px 0;
@@ -43,38 +44,61 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 35px; 
-  height: 35px;
-  padding: 5px;  
-  border: 1px solid #fe9f02;
+  min-width: 40px; 
+  height: 40px;
+  padding: 5px 12px;  
+  border: 1px solid rgba(254, 159, 2, 0.5);
+  border-radius: 8px;
   color: #fe9f02;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(5px);
   cursor: pointer;
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: 0.3s;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .paginationBttns a:hover {
-  color: white;
+  color: #000;
   background-color: #fe9f02;
+  border-color: #fe9f02;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(254, 159, 2, 0.3);
 }
 
 .paginationActive a {
-  color: white;
-  background-color: #fe9d02;
+  color: #000;
+  background-color: #fe9f02;
+  border-color: #fe9f02;
+  font-weight: bold;
 }
 
 .paginationDisabled a {
-  color: #000000;
-  background-color: #fe9f02;
+  color: rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a; 
+}
+::-webkit-scrollbar-thumb {
+  background: #555; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fe9f02; 
 }
 
 .containerNotFound {
-  width: 800px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -83,12 +107,17 @@
 .asideGrid {
   width: 100%;
   margin-top: 50px;
-  /* border: 1px solid #fff; */
 }
 @media screen and (min-width: 1300px) and (max-width: 1700px) {
   .title {
-    font-size: 80px;
-    padding-left: 45px;
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerCards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
   }
 }
 
@@ -97,28 +126,26 @@
     margin: 20px 0;
   }
   .containerCards {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
     gap: 25px;
+    padding: 0 10px;
   }
   .paginationBttns {
-    gap: 5px;
+    gap: 6px;
   }
 
   .paginationBttns a {
-    min-width: 30px; 
-    height: 30px;
-    font-size: 0.8rem;
-    margin: 2px;
+    min-width: 35px; 
+    height: 35px;
+    font-size: 0.9rem;
+    padding: 4px 8px;
   }
 }
 @media (max-width: 400px) {
   .title {
-    width: 80%;
-    font-size: 1.5rem;
-    text-align: center;
+    font-size: 2rem;
   }
-
   .paginationBttns {
-    margin: 40px 0;
+    margin: 30px 0;
   }
 }

@@ -5,11 +5,17 @@
 .container {
   color: #fff;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 25px;
+  margin: 40px auto;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* ========================================================= */
@@ -17,17 +23,18 @@
 /* ========================================================= */
 
 .titleGame {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   text-transform: uppercase;
   color: #fe9f02;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 15px rgba(254, 159, 2, 0.3);
 }
 
 .titleAbout {
-  font-size: 1.9rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 800;
   color: #fe9f02;
   margin-bottom: 15px;
 }
@@ -35,15 +42,15 @@
 .titleInfo {
   color: #fe9f02;
   font-weight: bold;
-  margin-bottom: 6px;
-  text-decoration: underline;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
 }
 
 .titlePlatforms {
   color: #fe9f02;
-  font-size: 1.7rem;
-  margin-bottom: 12px;
-  text-decoration: underline;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 800;
 }
 
 /* ========================================================= */
@@ -56,20 +63,20 @@
   gap: 30px;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .img {
-  width: 750px;
-  max-width: 100%;
-  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .containerInfo {
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #e0e0e0;
 }
 
 /* ========================================================= */
@@ -79,37 +86,41 @@
 .containerInfoGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, auto);
   gap: 25px;
   width: 100%;
   margin-top: 20px;
 }
 
 .infoBlock {
-  background: #111;
-  padding: 15px 18px;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
+
 .infoBlockEmpty {
   background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .tagsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .tagItem {
-  background: #fe9f0299;
-  padding: 4px 10px;
-  border-radius: 6px;
+  background: rgba(254, 159, 2, 0.15);
+  color: #fe9f02;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 /* ========================================================= */
@@ -123,27 +134,32 @@
 
 .platformList {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
 }
+
 .platformListMini {
   list-style: none;
   padding-left: 0;
 }
 
 .platformListMini li {
-  margin-bottom: 5px;
-  background: #222;
-  padding: 4px 8px;
-  border-radius: 5px;
-  border-left: 3px solid #fe9f02;
+  margin-bottom: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 4px solid #fe9f02;
+  color: #ddd;
 }
 
 .platformItem {
-  background: #111;
-  padding: 8px 12px;
-  margin-bottom: 6px;
-  border-left: 3px solid #fe9f02;
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 15px;
+  border-left: 4px solid #fe9f02;
+  border-radius: 8px;
+  font-weight: 500;
 }
 
 /* ========================================================= */
@@ -154,64 +170,99 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .btn,
 .btnDelete {
-  padding: 10px 20px;
-  font-weight: bold;
-  border-radius: 6px;
+  padding: 12px 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 0.25s;
+  transition: all 0.3s ease;
   border: 2px solid #fe9f02;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .btn {
-  background: #00000088;
-  color: #fff;
+  background: rgba(254, 159, 2, 0.1);
+  color: #fe9f02;
 }
 
 .btn:hover {
   background: #fe9f02;
   color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(254, 159, 2, 0.4);
 }
 
 .btnDelete {
   border-color: #ff3b3b;
+  color: #ff3b3b;
+  background: rgba(255, 59, 59, 0.1);
 }
 
 .btnDelete:hover {
   background: #ff3b3b;
-  color: #000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 59, 59, 0.4);
 }
 
 /* ========================================================= */
 /*                        RESPONSIVE                          */
 /* ========================================================= */
 
-@media (max-width: 768px) {
-  .titleGame {
-    font-size: 2.3rem;
-  }
-}
-@media (max-width: 650px) {
+@media (max-width: 900px) {
   .containerInfoGrid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
   }
 }
 
-@media (max-width: 480px) {
-  .titleGame {
-    font-size: 1.9rem;
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
   }
 
-  .img {
-    height: 180px;
+  .titleGame {
+    font-size: 2.5rem;
+  }
+
+  .btnContainer {
+    flex-direction: column;
+    align-items: center;
   }
 
   .btn,
   .btnDelete {
-    width: 110px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 10px;
+    padding: 15px;
+    border-radius: 15px;
+  }
+  
+  .titleGame {
+    font-size: 2rem;
+  }
+
+  .img {
+    border-radius: 12px;
+  }
+
+  .titleAbout {
+    font-size: 1.5rem;
+  }
+
+  .titlePlatforms {
+    font-size: 1.5rem;
   }
 }

@@ -2,10 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
-  background: #ffffff12;
+  height: 100px;
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 0 40px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -15,8 +21,12 @@
 
 .logoImage {
   color: #fff;
-  font-size: 80px;
-  transition: font-size 0.3s ease;
+  font-size: 60px;
+  transition: font-size 0.3s ease, color 0.3s ease;
+}
+
+.logoImage:hover {
+  color: #fe9f02;
 }
 
 .containerOptions {
@@ -27,15 +37,16 @@
 
 .option {
   color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .option:hover {
   color: #fe9f02;
+  transform: translateY(-2px);
 }
 
 .menuResponsive {
@@ -44,19 +55,27 @@
   color: white;
   cursor: pointer;
   order: 2;
+  transition: color 0.3s ease;
+}
+
+.menuResponsive:hover {
+  color: #fe9f02;
 }
 
 /* --- RESPONSIVE --- */
 
 @media (max-width: 1024px) {
+  .headerContainer {
+    padding: 0 20px;
+  }
   .containerOptions {
-    gap: 15px;
+    gap: 20px;
   }
   .option {
     font-size: 1rem;
   }
   .logoImage {
-    font-size: 60px;
+    font-size: 50px;
   }
 }
 
@@ -70,25 +89,36 @@
     top: 100px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 100px); 
-    background: rgba(0, 0, 0, 0.95);
+    height: auto;
+    padding: 30px 0;
+    background: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(254, 159, 2, 0.3);
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
+    gap: 25px;
     display: none;
     margin-right: 0;
     z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   }
 
   .containerOptions.active {
-    display: flex; 
+    display: flex;
+    animation: slideDown 0.3s ease-out forwards;
   }
 
   .option {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 
   .logoImage {
-    font-size: 50px;
+    font-size: 45px;
   }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

@@ -1,54 +1,60 @@
-# 🎮 Videogames API — v1.0
+# 🎮 Videogames App (Full Stack) — v1.0
 
-Aplicación **Full Stack** desarrollada con fines educativos.  
-La plataforma permite explorar una amplia biblioteca de videojuegos consumiendo la API de **RAWG.io**, y además posibilita que los usuarios registrados creen y gestionen sus propios videojuegos mediante una base de datos propia.
+![Videogames App Hero](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=250&section=header&text=Videogames%20App&fontSize=90&fontAlignY=38&desc=Explora,%20crea%20y%20gestiona%20tus%20videojuegos%20favoritos&descAlignY=51&descAlign=62)
 
-Este proyecto corresponde a la **Versión 1.0**, concebida como una base sólida y escalable.  
-En futuras versiones se incorporarán **nuevas funcionalidades, mejoras de rendimiento y optimizaciones de UX/UI**.
+Aplicación **Full Stack** desarrollada con fines educativos y un diseño visual extremadamente cuidado. 
+La plataforma permite explorar una amplia biblioteca de videojuegos consumiendo la API de **RAWG.io**, y posibilita que los usuarios registrados creen y gestionen sus propios videojuegos mediante una base de datos propia.
 
----
-
-## 📝 Descripción
-
-El proyecto se caracteriza por:
-- Interfaz moderna e intuitiva.
-- Manejo de estado global sólido.
-- **Diseño 100% Responsive**, adaptable a cualquier dispositivo.
+Con una interfaz modernizada, fluida y con **Glassmorphism**, esta aplicación ofrece un acabado visual *premium*, 100% responsivo, con modo oscuro y paleta de colores inmersiva.
 
 ---
 
-## 🛠️ Tecnologías y Librerías
+## ✨ Características Principales
 
-### 🔹 Frontend
-- **React** & **Redux** — Manejo de estado global.
-- **CSS Modules** — Estilos encapsulados para evitar colisiones.
-- **Material UI** — Grid System para el layout principal.
-- **React Paginate** — Navegación eficiente entre grandes volúmenes de datos.
-- **Responsive Design** — Media Queries y unidades dinámicas (`clamp`, `vw`, `rem`).
-
-### 🔹 Backend
-- **Node.js** & **Express**.
-- **Sequelize ORM** & **PostgreSQL** — Persistencia de datos.
-- **JWT (JSON Web Token)** — Autenticación segura.
-- **Cloudinary** — Almacenamiento y gestión de imágenes en la nube.
+- **Exploración de Videojuegos:** Visualización de cientos de juegos obtenidos de RAWG API con datos precisos (rating, plataformas, géneros, lanzamiento).
+- **Sistema de Búsqueda y Filtrado Avanzado:** Búsqueda dinámica por nombre de videojuego. Filtros combinados por Género, Origen (API/BD) y Plataforma.
+- **Creación de Títulos Propios:** Formulario controlado para agregar juegos a tu propia base de datos, con carga interactiva de imágenes mediante **Cloudinary**.
+- **Autenticación y Sesión:** Sistema de Registro y Login seguro a nivel base de datos, utilizando **JWT (JSON Web Token)** y hasheo de contraseñas.
+- **Diseño Moderno (Glassmorphism):** UI avanzada con efectos translúcidos (efecto cristal), fondos dinámicos, sombras suaves, bordes redondeados y un UX adaptable tanto a dispositivos móviles como de escritorio.
+- **Manejo del Estado Global:** Arquitectura moderna con **Redux Toolkit** (Slices) y **Redux Thunk** para peticiones asíncronas limpias y escalables.
 
 ---
-## 🚀 Instalación
 
-1. Clona el repositorio.
-2. Es necesario realizar la instalación de dependencias en ambas carpetas:
-   ```bash
-   # En la carpeta api
-   cd api && npm install
-   
-   # En la carpeta client
-   cd ../client && npm install
+## 🛠️ Tecnologías y Herramientas
 
-## 🗄️ Carpeta API (Backend)
-### ⚙️ Requisitos
-- Base de datos **PostgreSQL** configurada.### Variables de entorno de api 
+### 🎨 Frontend (Client)
+- **React 18 & Vite:** Framework y bundler de altísimo rendimiento.
+- **Redux Toolkit & React-Redux:** Manejo de estado global asíncrono robusto.
+- **Styled-Components & Material UI:** Sistema de diseño responsivo de primer nivel.
+- **React Router Dom (v5):** Navegación fluida tipo SPA sin recarga de página.
+- **React Paginate:** Navegación por páginas para grandes volúmenes de videojuegos.
+- **Axios & React Toastify:** Peticiones HTTP eficientes a la API y notificaciones emergentes amigables al usuario (Ej: éxito y errores).
+- **Cloudinary React:** Componentes específicos para optimización de imágenes en el lado cliente.
 
-### 🔐 Variables de Entorno
+### ⚙️ Backend (API)
+- **Node.js & Express:** Entorno de ejecución y framework ágil para desarrollo de API RESTful.
+- **Sequelize ORM:** Interacción con base de datos orientada a objetos (uso de modelos).
+- **PostgreSQL:** Sistema de base de datos relacional para datos persistentes.
+- **Bcrypt & JSON Web Token:** Hasheo y verificación de credenciales y autorización por rutas protegidas.
+- **Morgan, Body-Parser, CORS & Dotenv:** Middlewares para validaciones de seguridad, logs de la aplicación y variables de entorno (`.env`).
+
+---
+
+## 🚀 Instalación y Ejecución Local
+
+### 1. Clonar el repositorio
+```bash
+git clone <url-del-repositorio>
+cd Videogames
+```
+
+### 2. Configurar el Backend (Carpeta `api`)
+Abre una terminal y dirígete a la carpeta `api`:
+```bash
+cd api
+npm install
+```
+Crea un archivo `.env` en la raíz de la carpeta `api` basándote en el archivo de plantilla `.env.template`:
 ```env
 DB_USER=TU_USUARIO
 DB_PASSWORD=TU_PASSWORD
@@ -58,64 +64,66 @@ PORT=3001
 API_KEY=TU_API_KEY_RAWG
 JWT_SECRET=TU_SECRET_JWT
 ```
-### 📡 Endpoints
-### 🎮 Videogame
-    GET /videogames : Obtiene 100 juegos de la API/BD.
-    GET /videogames?name= : Búsqueda por nombre.
-    GET /videogame/:videogame_id : Detalle de un juego específico.
-    POST /videogame : Crea un nuevo juego en la BD. 
-    PUT /videogame/:videogame_id : modificar un juego ya existente en la BD. 
-    DELETE /videogame/:videogame_id : Elimina un juego de la BD.
-### 🏷️ Genre
-    GET /genres : Lista completa de géneros.
+Ejecuta el servidor en modo desarrollo:
+```bash
+npm run dev
+```
 
-### 🖥️ Platform
-    GET /platforms : Lista completa de plataformas disponibles.
+### 3. Configurar el Frontend (Carpeta `client`)
+Abre otra terminal y dirígete a la carpeta `client`:
+```bash
+cd client
+npm install
+```
+Asegúrate de configurar `.env` si es necesario (ej: `VITE_API_URL=http://localhost:3001` si deseas usar variables en desarrollo o producción). 
+Ejecuta la vista principal del frontend:
+```bash
+npm run dev
+```
+Accede desde tu navegador al puerto proporcionado por Vite (usualmente `http://localhost:5173`).
 
-### 👤 User
-    GET /user : trae la información de un usuario en la BD.
+---
 
-### 🔐 Autenticación (JWT)
-    POST /register : Registro de nuevos usuarios.
-    POST /login : Inicio de sesión y generación de token.
-    GET /is-verify : Validación de token JWT para persistencia de sesión.
+## 📡 Endpoints de la API REST
 
-### 🏷️ Tag
-    GET /tags : trae la informacion de todos los tags que poseen los juegos.
+Base del proyecto desplegado/local (Ej. `http://localhost:3001`).
 
-## 🖥️ Carpeta Client (Frontend)
+### 🎮 Videojuegos
+- `GET /videogames`: Obtiene listado paginado (desde API externa + BD).
+- `GET /videogames?name=...`: Búsqueda específica que filtre las coincidencias de nombres.
+- `GET /videogame/:id`: Obtiene datos técnicos del juego especificado (rating, release date).
+- `POST /videogame`: Crea un nuevo juego (Requiere JWT válido).
+- `PUT /videogame/:id`: Modifica un videojuego creado (Requiere JWT válido).
+- `DELETE /videogame/:id`: Elimina un escenario creado en BD.
 
-La interfaz de usuario ha sido optimizada para ofrecer una experiencia fluida en cualquier dispositivo.
+### 🏷️ Datos Relacionados
+- `GET /genres`: Array completo de géneros listos (precargados de RAWG API).
+- `GET /platforms`: Devuelve todas las plataformas de los videojuegos.
+- `GET /tags`: Devuelve tags extras asociados.
 
-### 📂 Secciones y Rutas Principales
+### 👤 Usuarios y Autenticación (Seguridad)
+- `POST /register`: Da de alta a un usuario nuevo. Hashea contraseñas y graba a la BD (Email, Password, Username).
+- `POST /login`: Validación de credenciales. Regresa JWT en respuesta si es exitoso.
+- `GET /is-verify`: (Require Token) Valida y reanuda sesión frontend activa.
+- `GET /user`: Obtiene los datos del perfil actual (Requiere Token).
 
-#### `/` — Explorador de Juegos
-- **Lista Paginada**: Visualización organizada de juegos con navegación optimizada.
-- **Búsqueda Dinámica**: Barra de búsqueda funcional que filtra resultados por nombre.
-- **Filtros Avanzados**: Herramientas para segmentar por **Género** y **Plataforma**.
-- **UX Adaptativo**: Incluye un `MenuAside` (barra lateral) que se ajusta o colapsa según la resolución de pantalla.
+---
 
-#### `/videogame/:id` — Detalle
-- Vista técnica con la información completa del título seleccionado.
+## 📱 Secciones del Frontend
 
-#### `/newGame` — Creación de Contenido
-- Formulario controlado para registrar nuevos videojuegos en la base de datos.
-- **Restricción**: Requiere autenticación de usuario (**Login**).
+- **`/` (Explorador Home):** Vista principal con tarjetas (`Cards`) 100% responsivas, barra de búsqueda lateral/modal para filtros robustos.
+- **`/videogame/:id` (Vista Detalle):** Ruta dedicada a desplegar información puntual del juego de forma inmersiva sin sobrecargar de componentes.
+- **`/newGame` (Creación Formulario):** Solo puedes acceder logueado. Componente donde ingresas datos, previsualizas imágenes en vivo y envías los datos mediante Axios al backend.
+- **`/login` & `/register` (Acceso):** Vistas donde registras y logueas tu cuenta en la red y evitas rutas caídas, permitiendo gestionar tokens internamente en localStorage/Redux state.
+- **`/about` (Desarrollo):** Información del proyecto, link, CV y metas del desarrollador.
 
-#### `/about` — Acerca de
-- Explicación técnica del proyecto, stack tecnológico y metodologías utilizadas.
-
-#### `/login` & `/register` — Seguridad
-- Módulos de acceso y creación de cuentas con validación y feedback visual.
+---
 
 ## 📝 Comentarios Finales
 
-Este proyecto fue desarrollado por **Facundo Maksud**.  
-Se puso especial énfasis en la **refactorización del código** para lograr componentes limpios y una **interfaz de usuario totalmente responsive**, adaptada a cualquier dispositivo móvil.
+Este proyecto fue desarrollado y refactorizado profundamente por **Facundo Maksud**.  
+Se puso un especial énfasis en la **limpieza del código**, **rendimiento y experiencia del usuario (Responsive Design & Glassmorphism)** integrados en una SPA veloz y elegante.
 
-Link del deploy: https://videogames-brown.vercel.app/
+🔗 **Link del Deploy (Ejemplo):** [https://videogames-brown.vercel.app/](https://videogames-brown.vercel.app/)
 
-Cualquier comentario o **feedback** será bien recibido.  
-¡Muchas gracias! 🙌
-
-
+Cualquier feedback es bienvenido. ¡Gracias por explorar la App! 🙌
